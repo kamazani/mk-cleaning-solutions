@@ -1,26 +1,60 @@
 @import "tailwindcss";
 
+/* @tailwind directives require Tailwind CSS build process. Uncomment if using Tailwind CLI or PostCSS. */
+ /*@tailwind base; 
+ @tailwind components; 
+ @tailwind utilities; */
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --mk-blue: 2 132 199;        /* sky-700: #0284c7 (deeper blue) */
+  --mk-green: 16 185 129;      /* emerald-500: #10b981 (vivid green) */
+  --mk-blue-dark: 30 64 175;   /* blue-800: #1e40af (deep blue for accents) */
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html, body {
+  height: 100%;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: #fff; /* Tailwind bg-white */
+  color: #0f172a;         /* Tailwind text-slate-900 */
+}
+
+.container-pad {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 72rem; /* max-w-6xl */
+  padding-left: 1rem; /* px-4 */
+  padding-right: 1rem; /* px-4 */
+}
+
+@media (min-width: 640px) {
+  .container-pad {
+    padding-left: 1.5rem; /* sm:px-6 */
+    padding-right: 1.5rem; /* sm:px-6 */
+  }
+}
+
+@media (min-width: 1024px) {
+  .container-pad {
+    padding-left: 2rem; /* lg:px-8 */
+    padding-right: 2rem; /* lg:px-8 */
+  }
+}
+
+/* Fancy gradient background */
+.bg-mk {
+  background:
+    radial-gradient(1200px 600px at 10% 10%, rgba(2,132,199,0.28), transparent 60%),   /* more blue, more opacity */
+    radial-gradient(900px 500px at 90% 20%, rgba(16,185,129,0.22), transparent 55%),   /* more green, more opacity */
+    radial-gradient(900px 600px at 50% 90%, rgba(30,64,175,0.18), transparent 55%),    /* deep blue accent */
+    linear-gradient(to bottom, #f1f5f9, #e0f2fe 80%, #f8fafc);                        /* lighter, fresher base */
+}
+
+/* glassy card */
+.glass {
+  background-color: rgba(255,255,255,0.85); /* more opaque for contrast */
+  backdrop-filter: blur(10px);              /* slightly stronger blur */
+  border: 1.5px solid rgba(2,132,199,0.18); /* blue border accent */
+  box-shadow: 0 4px 16px 0 rgba(2,132,199,0.10), 0 1.5px 4px 0 rgba(16,185,129,0.10); /* more pop */
 }
